@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  nekoserver:
+    build: .
+    container_name: nekoserver
+    ports:
+      - "8982:8982"
+    volumes:
+      - ./Downloads:/app/downloads
+    environment:
+      - PORT=8982
+    restart: unless-stopped
+    networks:
+      - nekomusic
+
+networks:
+  nekomusic:
+    driver: bridge
